@@ -26,3 +26,20 @@ www-test/
 
 #old GWT (1.5) created this dir
 .gwt-tmp/
+
+.gradle
+/build
+*/.swp
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+/classes
+/dist
+/out/
+/gwt-unitCache/
+/bin
+/dev.gradle
+.idea

@@ -1,0 +1,4 @@
+rootProject.name = 'my-gwt-project'
+include 'gwt-data'
+include 'gwt-web'
+

@@ -1,0 +1,72 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'war'
+}
+
+apply plugin: 'gwt'
+
+def gwtVersionNum = "2.8.2"
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+gwt {
+    gwtVersion=gwtVersionNum
+    minHeapSize = '512M'
+    maxHeapSize = '1024M'
+    compiler.localWorkers = 8
+    modules 'com.zenhog.mygwtproject.GwtWeb'
+}
+
+webAppDirName = 'src/main/webapp'
+
+war {
+    archiveName 'MyGWTProject.war'
+    manifest {
+        attributes("Specification-Title": project.name,
+                "Specification-Vendor": "zenhog.com",
+                "Specification-Version": project.version,
+                "Implementation-Title": project.name,
+                "Implementation-Vendor": "zenhog.com",
+                "Implementation-Version": project.version)
+    }
+}
+
+group 'com.zenhog'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
